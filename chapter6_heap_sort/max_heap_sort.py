@@ -4,6 +4,11 @@ import unittest
 import utils.random_utils as random_utils
 
 
+# 获取父节点
+def parent(i):
+    return (i + 1) // 2 - 1
+
+
 # 获取左孩子节点
 def left(i):
     return 2 * i + 1

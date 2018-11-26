@@ -10,3 +10,7 @@ def random_int_list(start=0, stop=1000, length=10):
     for i in range(length):
         random_list.append(random.randint(start, stop))
     return random_list
+
+
+def random_int(start=0, stop=1000):
+    return random.randint(start, stop)
