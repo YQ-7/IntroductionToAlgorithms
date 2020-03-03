@@ -55,8 +55,13 @@ def heap_sort(array):
 
 class MinHeapSort(unittest.TestCase):
 
-    @staticmethod
-    def test_hear_sort():
+    def test_hear_sort(self):
         array = random_utils.random_int_list()
         heap_sort(array)
-        print(array)
+        self.assertTrue(array[0] >= array[1])
+        self.assertTrue(array[1] >= array[2])
+        self.assertTrue(array[2] >= array[3])
+
+
+if __name__ == '__main__':
+    unittest.main()
