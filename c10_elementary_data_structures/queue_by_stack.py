@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-from chapter10.Stack import Stack
+from utils.my_stack import Stack
 
 
 class QueueByStack(object):
 
-    def __init__(self):
-        self.push_stack = Stack()
-        self.pop_stack = Stack()
+    def __init__(self, length=100):
+        self.push_stack = Stack(length=length)
+        self.pop_stack = Stack(length=length)
 
     def enqueue(self, item):
         self.push_stack.push(item)
@@ -25,17 +25,20 @@ class QueueByStack(object):
 
 class TestQueueByStack(unittest.TestCase):
 
-    @staticmethod
-    def test_stack():
+    def test_stack(self):
         my_queue = QueueByStack()
+        self.assertTrue(my_queue.is_empty())
         my_queue.enqueue(1)
         my_queue.enqueue(2)
         my_queue.enqueue(3)
-        print(my_queue.is_empty())
+        self.assertFalse(my_queue.is_empty())
         my_queue.enqueue(4)
-        print(my_queue.dequeue())
-        print(my_queue.dequeue())
-        print(my_queue.dequeue())
-        print(my_queue.dequeue())
-        print(my_queue.is_empty())
+        self.assertEqual(1, my_queue.dequeue())
+        self.assertEqual(2, my_queue.dequeue())
+        self.assertEqual(3, my_queue.dequeue())
+        self.assertEqual(4, my_queue.dequeue())
+        self.assertTrue(my_queue.is_empty())
 
+
+if __name__ == '__main__':
+    unittest.main()

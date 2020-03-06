@@ -13,8 +13,7 @@ class Deque(object):
 
     def push(self, item):
         if self.tail == self.head:
-            print("Queue overflow")
-            return
+            raise OverflowError("overflow")
         self.items[self.tail] = item
         if self.head is None:
             self.head = self.tail
@@ -23,8 +22,7 @@ class Deque(object):
 
     def unshift(self, item):
         if self.tail == self.head:
-            print("Queue overflow")
-            return
+            raise OverflowError("overflow")
 
         if self.head is None:
             self.head = self.tail
@@ -34,8 +32,7 @@ class Deque(object):
 
     def pop(self):
         if self.head is None:
-            print("Queue underflow")
-            return
+            raise OverflowError("underflow")
 
         self.tail = (self.tail - 1) % self.length
         item = self.items[self.tail]
@@ -47,8 +44,7 @@ class Deque(object):
 
     def shift(self):
         if self.head is None:
-            print("Queue underflow")
-            return
+            raise OverflowError("underflow")
         item = self.items[self.head]
         self.items[self.head] = None
         self.head = (self.head + 1) % self.length
@@ -71,15 +67,23 @@ class Deque(object):
 
 class TestDeQue(unittest.TestCase):
 
-    @staticmethod
-    def test_deque():
+    def test_deque(self):
         my_queue = Deque(length=3)
+        self.assertTrue(my_queue.is_empty())
+        self.assertEqual(0, my_queue.size())
+        self.assertRaisesRegex(OverflowError, "underflow", my_queue.pop)
         my_queue.push(1)
         my_queue.push(2)
         my_queue.unshift(-1)
-        print(my_queue.size())
-        print(my_queue.pop())
-        print(my_queue.shift())
-        print(my_queue.is_empty())
-        print(my_queue.pop())
-        print(my_queue.is_empty())
+        self.assertFalse(my_queue.is_empty())
+        self.assertEqual(3, my_queue.size())
+        self.assertRaisesRegex(OverflowError, "overflow", my_queue.push, 3)
+        self.assertRaisesRegex(OverflowError, "overflow", my_queue.unshift, 3)
+        self.assertEqual(-1, my_queue.shift())
+        self.assertEqual(2, my_queue.pop())
+        self.assertEqual(1, my_queue.size())
+        self.assertEqual(1, my_queue.pop())
+
+
+if __name__ == '__main__':
+    unittest.main()
