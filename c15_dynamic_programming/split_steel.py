@@ -110,25 +110,25 @@ def print_cut_rod_solution(n, s):
 class SplitSteel(unittest.TestCase):
 
     def test_cut_rod(self):
-        self.assertEquals(0, cut_rod(0))
-        self.assertEquals(1, cut_rod(1))
-        self.assertEquals(5, cut_rod(2))
-        self.assertEquals(10, cut_rod(4))
-        self.assertEquals(30, cut_rod(10))
+        self.assertEqual(0, cut_rod(0))
+        self.assertEqual(1, cut_rod(1))
+        self.assertEqual(5, cut_rod(2))
+        self.assertEqual(10, cut_rod(4))
+        self.assertEqual(30, cut_rod(10))
 
     def test_memoized_cut_rod(self):
-        self.assertEquals(0, memoized_cut_rod(0))
-        self.assertEquals(1, memoized_cut_rod(1))
-        self.assertEquals(5, memoized_cut_rod(2))
-        self.assertEquals(10, memoized_cut_rod(4))
-        self.assertEquals(30, memoized_cut_rod(10))
+        self.assertEqual(0, memoized_cut_rod(0))
+        self.assertEqual(1, memoized_cut_rod(1))
+        self.assertEqual(5, memoized_cut_rod(2))
+        self.assertEqual(10, memoized_cut_rod(4))
+        self.assertEqual(30, memoized_cut_rod(10))
 
     def test_bottom_cut_rod(self):
-        self.assertEquals(0, bottom_cut_rod(0))
-        self.assertEquals(1, bottom_cut_rod(1))
-        self.assertEquals(5, bottom_cut_rod(2))
-        self.assertEquals(10, bottom_cut_rod(4))
-        self.assertEquals(30, bottom_cut_rod(10))
+        self.assertEqual(0, bottom_cut_rod(0))
+        self.assertEqual(1, bottom_cut_rod(1))
+        self.assertEqual(5, bottom_cut_rod(2))
+        self.assertEqual(10, bottom_cut_rod(4))
+        self.assertEqual(30, bottom_cut_rod(10))
 
     def test_print_bottom_cut_rod_solution(self):
         (r, s) = extended_bottom_cut_rod(10)
@@ -145,3 +145,7 @@ class SplitSteel(unittest.TestCase):
         (r, s) = extended_memoized_cut_rod(9)
         print_cut_rod_solution(9, s)
         self.assertTrue(3, 6 in s)
+
+
+if __name__ == '__main__':
+    unittest.main()

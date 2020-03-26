@@ -16,8 +16,12 @@ def fibonacci(n):
 class Fibonacci(unittest.TestCase):
 
     def test_fibonacci(self):
-        self.assertEquals(1, fibonacci(0))
-        self.assertEquals(1, fibonacci(1))
-        self.assertEquals(2, fibonacci(2))
-        self.assertEquals(3, fibonacci(3))
-        self.assertEquals(5, fibonacci(4))
+        self.assertEqual(1, fibonacci(0))
+        self.assertEqual(1, fibonacci(1))
+        self.assertEqual(2, fibonacci(2))
+        self.assertEqual(3, fibonacci(3))
+        self.assertEqual(5, fibonacci(4))
+
+
+if __name__ == '__main__':
+    unittest.main()
